@@ -2,14 +2,17 @@ from flask import Flask
 
 app = Flask(__name__)
 
-# Memberes Api Route
-
 # this will be removed and  replaced with the real backend code of the project at a later date
 
-@app.route("/members")
-def members():
-    return {"memberes": ["Member1", "Member2","Member3"]}
+@app.route("/profile")
+def EJ_profile():
+    my_name_jason = {
+        "name":"Elijah Quinones",
+        "about":"I am a software engineer fellow at Hack.Diversity"
+    }
+    return my_name_jason
 
+@app.route("/")
+def welcome():
+    return "Welcome to our capstone project"
 
-if __name__ == "__main__":
-    app.run(debug=True)
