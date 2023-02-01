@@ -1,4 +1,4 @@
-from flask import Flask
+from flask import Flask,render_template
 
 app = Flask(__name__)
 
@@ -14,5 +14,5 @@ def EJ_profile():
 
 @app.route("/")
 def welcome():
-    return "Welcome to our capstone project"
+    return render_template("index.html")
 
