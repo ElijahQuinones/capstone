@@ -1,5 +1,5 @@
-from flask import Flask,render_template,url_for
-
+from flask import Flask,render_template,url_for,request
+import sqlite3
 app = Flask(__name__)
 
 # this will be removed and  replaced with the real backend code of the project at a later date
@@ -12,13 +12,32 @@ def EJ_profile():
     }
     return my_name_jason
 
-@app.route("/")
-def welcome():
-    return render_template("index.html")
 
-@app.route("/login")
+@app.route("/", methods = ['GET','POST'])
 def login():
-    return render_template("login.html")
+    if request.method == 'POST':
+        #connect to db
+        connection = sqlite3.connect('Login.db')
+        cursor = connection.cursor()
+
+        username = request.form['username']
+        password = request.form['password']
+
+        # the '"+username+"' is using the actual varibale value instead of the String literal username
+        check = "SELECT username,password FROM users where username='"+username+"'and password='"+password+"'"
+        
+        # checks the database for the username and password given
+        cursor.execute(check)
+
+        validate = cursor.fetchall()
+
+        if len(validate) == 0:
+            return render_template("login_unsucessfull.html")
+        else:
+            return render_template("loggedin.html")
+        
+    elif request.method == 'GET':
+        return render_template("login.html")
 
 @app.route("/register")
 def register():
