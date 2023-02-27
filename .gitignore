@@ -1,3 +1,4 @@
 Login.db
 create.py
-*.pyc
+server.pyc
+.DS_Store
