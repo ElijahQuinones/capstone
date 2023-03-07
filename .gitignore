@@ -4,7 +4,7 @@ server.pyc
 
 
 # Local enviorment
-# .flaskenv
+.flaskenv
 backend_README.txt
 venv
 __pycache__/server.cpython-39.pyc
