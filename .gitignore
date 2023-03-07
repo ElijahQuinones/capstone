@@ -1,4 +1,10 @@
 Login.db
 create.py
 server.pyc
+
+
+# Local enviorment
+backend_README.txt
+venv
+__pycache__/server.cpython-39.pyc
 .DS_Store
