@@ -1,5 +1,6 @@
 from flask import Flask,render_template,url_for,request
 import sqlite3
+from waitress import serve
 app = Flask(__name__)
 
 # this will be removed and  replaced with the real backend code of the project at a later date
@@ -44,4 +45,4 @@ def register():
     return render_template("register.html")
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    serve(app, host='0.0.0.0', port= 50100, threads =2)
