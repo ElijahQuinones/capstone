@@ -7,68 +7,94 @@
 <html>
 <head>
 	<title>Login | AWS CloudTrail Query and Log Analysis</title>
+	<link rel="stylesheet" href="style.css">
 	<style>
 		body {
-			background-color: #f5f5f5;
-			font-family: Arial, sans-serif;
-		}
-		
-		form {
-			background-color: #ffffff;
-			border-radius: 5px;
-			padding: 20px;
-			box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
-			margin: 100px auto;
-			max-width: 400px;
+	background-color: #f5f5f5;
+	font-family: Arial, sans-serif;
+    }
+
+form {
+	background-color: #ffffff;
+	border-radius: 5px;
+	padding: 20px;
+	box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+	margin: 100px auto;
+	max-width: 400px;
+	text-align: center;
+    }
+
+h1 {
+	color: #333333;
+	margin: 0 0 30px;
+	font-size: 28px;
+    }
+
+label {
+	display: block;
+	margin: 10px 0;
+	color: #555555;
+	font-size: 16px;
+	font-weight: bold;
+	text-align: left;
+    }
+
+input[type="text"],
+input[type="password"] {
+	width: 100%;
+	padding: 10px;
+	border-radius: 3px;
+	border: 1px solid #cccccc;
+	font-size: 16px;
+	color: #555555;
+	box-sizing: border-box;
+    margin-bottom: 20px;
+    }
+
+input[type="submit"] {
+	background-color: #0070c0;
+	color: #ffffff;
+	padding: 10px 20px;
+	border-radius: 3px;
+	border: none;
+	font-size: 16px;
+	cursor: pointer;
+	transition: background-color 0.3s ease-in-out;
+    }
+
+input[type="submit"]:hover {
+	background-color: #00519e;
+    }
+
+    h2 {
+  animation: fadeInOut 2s ease-in-out infinite;
+}
+
+@keyframes fadeInOut {
+  0% {
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+.warning-font {
+  font-family: "Arial Black", sans-serif;
+  font-size: 24px;
+  color: red;
+}
+
+.warning-font {
 			text-align: center;
-		}
-		
-		h1 {
-			color: #333333;
-			margin: 0 0 30px;
-			font-size: 28px;
-		}
-		h2{
-            color: red;
-			margin: 0 0 30px;
-			font-size: 28px;
-			text-align: center;
-        }
-		label {
-			display: block;
-			margin: 10px 0;
-			color: #555555;
-			font-size: 16px;
+			color: red;
 			font-weight: bold;
-			text-align: left;
-		}
-		
-		input[type="text"], input[type="password"] {
-			width: 100%;
-			padding: 10px;
-			border-radius: 3px;
-			border: 1px solid #cccccc;
-			font-size: 16px;
-			color: #555555;
-			box-sizing: border-box;
-		}
-		
-		input[type="submit"] {
-			background-color: #0070c0;
-			color: #ffffff;
-			padding: 10px 20px;
-			border-radius: 3px;
-			border: none;
-			font-size: 16px;
-			cursor: pointer;
-			transition: background-color 0.3s ease-in-out;
-		}
-		
-		input[type="submit"]:hover {
-			background-color: #00519e;
 		}
 	</style>
 </head>
+
 <body>
 	<form method="POST">
 		<h1>Login | AWS CloudTrail Query and Log Analysis</h1>
@@ -78,6 +104,6 @@
 		<input type="password" id="password" name="password" required>
 		<input type="submit" value="Log In">
 	</form>
-    <h2>Invalid credentails try again</h2>
+    <h2 class="warning-font">Invalid credentails try again</h2>
 </body>
 </html>
