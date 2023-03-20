@@ -8,7 +8,7 @@
 <head>
 	<title>Login | AWS CloudTrail Query and Log Analysis</title>
 	<link rel="stylesheet" href="style.css">
-	<style>
+<style>
 		body {
 	background-color: #f5f5f5;
 	font-family: Arial, sans-serif;
@@ -93,6 +93,7 @@ input[type="submit"]:hover {
 			font-weight: bold;
 		}
 	</style>
+
 </head>
 
 <body>
@@ -105,5 +106,25 @@ input[type="submit"]:hover {
 		<input type="submit" value="Log In">
 	</form>
     <h2 class="warning-font">Invalid credentails try again</h2>
+<script>
+	var sidebarOpen = false;
+var sidebar = document.getElementById("sidebar");
+
+function openSidebar() {
+    if(!sidebarOpen) {
+        sidebar.classList.add("sidebar-responsive");
+        sidebarOpen = true;
+    }
+}
+
+function closeSidebar() {
+    if(sidebarOpen) {
+        sidebar.classList.remove("sidebar-responsive")
+        sidebarOpen = false;
+    }
+}
+
+</script>
+
 </body>
 </html>
