@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width,initial-scale=1.0">
+        <title>AWS Admin Dashboard</title>
+        <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&display=swap" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined" rel="stylesheet">
+        <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='dashboard/dashboard.css')}}" />
+    </head>
+    <body>
+        <div class="grid-container">
+            <header class="header">
+                <div class="menu-icon" onclick="openSidebar()">
+                    <span class="material-icons-outlined">menu</span>
+                </div>
+                <div class="header-left">
+                    <span class="material-icons-outlined">search</span>
+                </div>
+                <div class="header-right">
+                    <span class="material-icons-outlined">logout</span>
+                </div>
+            </header>
+
+            <aside id="sidebar">
+                <div class="sidebar-title">
+                    <div class="sidebar-brand">
+                        <span class="material-icons-outlined">cloud</span> AWS
+                    </div>
+                    <h1 class="menu-close">
+                        <span class="material-icons-outlined" onclick="closeSidebar()">close</span>
+                    </h1>
+                </div>
+                <ul class="sidebar-list">
+                    <li class="sidebar-list-item">
+                        <span class="material-icons-outlined">space_dashboard</span> Dashboard
+                    </li>
+                    <li class="sidebar-list-item">
+                        <span class="material-icons-outlined">table_view</span> Table
+                    </li>
+                    <li class="sidebar-list-item">
+                        <span class="material-icons-outlined">show_chart</span> Chart
+                    </li>
+                    <li class="sidebar-list-item">
+                        <span class="material-icons-outlined">settings</span> Settings
+                    </li>
+                </ul>
+            </aside>
+
+            <main class="main-container">
+                <div class="main-title">
+                    <h2>DASHBOARD</h2>
+                </div>
+
+                <div class="main-cards">
+                    <div class="card">
+                        <div class="card-inner">
+                            <h3>EVENTS</h3>
+                            <span class="material-icons-outlined text-orange">event</span>
+                        </div>
+                        <h1>7</h1>
+                    </div>
+                    <div class="card">
+                        <div class="card-inner">
+                            <h3>ALERTS</h3>
+                            <span class="material-icons-outlined text-red">announcement</span>
+                        </div>
+                        <h1>2</h1>
+                    </div> 
+
+                    <div class="charts-card">
+                        <h2 class="charts-title">Table</h2>
+                        <div id="data-table">
+                            <iframe src="{{ url_for('static', filename='dashboard/table.html')}}" onload='javascript:(function(o){o.style.height=o.contentWindow.document.body.scrollHeight+"px";}(this));' style="height:200px;width:100%;border:none;overflow:hidden;"></iframe>
+                        </div> 
+                    </div>
+
+                    <div class="charts-card">
+                        <h2 class="charts-title">Chart</h2>
+                        <div id="line-chart"></div>
+                    </div>
+
+                </div>
+            </main>
+        </div>
+
+        <script src="{{ url_for('static', filename='dashboard/dashboard.js')}}"></script>
+    </body>
+</html>

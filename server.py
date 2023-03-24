@@ -7,6 +7,7 @@ import json
 import datetime
 app = Flask(__name__)
 
+
 # this will be removed and  replaced with the real backend code of the project at a later date
 
 @app.route("/profile")
@@ -39,7 +40,7 @@ def login():
         if len(validate) == 0:
             return render_template("login_unsucessfull.html")
         else:
-            return render_template("loggedin.html")
+            return render_template("dashboard.html")
         
     elif request.method == 'GET':
         return render_template("login.html")
