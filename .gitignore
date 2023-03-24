@@ -1,2 +1,11 @@
 Login.db
 create.py
+server.pyc
+
+
+# Local enviorment
+.flaskenv
+backend_README.txt
+venv
+__pycache__/server.cpython-39.pyc
+.DS_Store
