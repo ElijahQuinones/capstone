@@ -35,7 +35,7 @@ def register():
 @app.route("/loggedin")
 def login():
     try:
-        print(request.query_string.get('code'))
+        print(request.args.get('code'))
 
         return render_template("dashboard.html")
     except:
