@@ -27,6 +27,10 @@ def login():
 def register():
     return render_template("register.html")
 
+@app.route("/loggedin)
+  def login():
+           return render_template("dashboard.html)
+
 # Test route where AWS data is displayed. 
 # Event name parameter is required 
 @app.route("/test/<event_name>")
