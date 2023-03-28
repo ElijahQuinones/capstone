@@ -32,7 +32,6 @@ def register():
     return render_template("register.html")
 
 @app.route("/loggedin")
-@cognito_auth_required
 def login():
     return render_template("dashboard.html")
 
