@@ -1,5 +1,6 @@
-from flask import Flask,render_template,url_for,request,redirect
+from flask import Flask,render_template,url_for,request,redirect,make_response
 import sqlite3
+from flask_cognito import cognito_auth_required
 from waitress import serve
 import boto3
 import os
@@ -9,6 +10,9 @@ app = Flask(__name__)
 
 
 # this will be removed and  replaced with the real backend code of the project at a later date
+
+
+
 
 @app.route("/profile")
 def EJ_profile():
@@ -28,6 +32,7 @@ def register():
     return render_template("register.html")
 
 @app.route("/loggedin")
+@cognito_auth_required
 def login():
     return render_template("dashboard.html")
 
