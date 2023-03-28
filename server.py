@@ -1,5 +1,6 @@
-from flask import Flask,render_template,url_for,request,redirect
+from flask import Flask,render_template,url_for,request,redirect,make_response
 import sqlite3
+from flask_cognito import cognito_auth_required
 from waitress import serve
 import boto3
 import os
@@ -9,6 +10,9 @@ app = Flask(__name__)
 
 
 # this will be removed and  replaced with the real backend code of the project at a later date
+
+
+
 
 @app.route("/profile")
 def EJ_profile():
@@ -20,34 +24,17 @@ def EJ_profile():
 
 
 @app.route("/", methods = ['GET','POST'])
-def login():
-    if request.method == 'POST':
-        #connect to db
-        connection = sqlite3.connect('Login.db')
-        cursor = connection.cursor()
-
-        username = request.form['username']
-        password = request.form['password']
-
-        # the '"+username+"' is using the actual varibale value instead of the String literal username
-        check = "SELECT username,password FROM users where username='"+username+"'and password='"+password+"'"
-        
-        # checks the database for the username and password given
-        cursor.execute(check)
-
-        validate = cursor.fetchall()
-
-        if len(validate) == 0:
-            return render_template("login_unsucessfull.html")
-        else:
-            return render_template("dashboard.html")
-        
-    elif request.method == 'GET':
-        return render_template("login.html")
+def home():
+    return redirect("https://it114capstone.auth.us-east-1.amazoncognito.com/login?client_id=nni18qf04rvoq1p64edejus30&response_type=code&scope=email+openid+phone&redirect_uri=https%3A%2F%2Faws1.onrender.com%2Floggedin")
 
 @app.route("/register")
 def register():
     return render_template("register.html")
+
+@app.route("/loggedin")
+@cognito_auth_required
+def login():
+    return render_template("dashboard.html")
 
 # Test route where AWS data is displayed. 
 # Event name parameter is required 
