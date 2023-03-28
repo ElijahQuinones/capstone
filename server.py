@@ -21,7 +21,7 @@ def EJ_profile():
 
 @app.route("/", methods = ['GET','POST'])
 def login():
-    return redirect("https://it114capstone.auth.us-east-1.amazoncognito.com/login?client_id=nni18qf04rvoq1p64edejus30&response_type=code&scope=email+openid+phone&redirect_uri=https%3A%2F%2Faws1.onrender.com%2Floggedin")
+    return redirect("https://it114capstone.auth.us-east-1.amazoncognito.com")
 
 @app.route("/register")
 def register():
