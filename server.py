@@ -21,29 +21,7 @@ def EJ_profile():
 
 @app.route("/", methods = ['GET','POST'])
 def login():
-    if request.method == 'POST':
-        #connect to db
-        connection = sqlite3.connect('Login.db')
-        cursor = connection.cursor()
-
-        username = request.form['username']
-        password = request.form['password']
-
-        # the '"+username+"' is using the actual varibale value instead of the String literal username
-        check = "SELECT username,password FROM users where username='"+username+"'and password='"+password+"'"
-        
-        # checks the database for the username and password given
-        cursor.execute(check)
-
-        validate = cursor.fetchall()
-
-        if len(validate) == 0:
-            return render_template("login_unsucessfull.html")
-        else:
-            return render_template("dashboard.html")
-        
-    elif request.method == 'GET':
-        return render_template("login.html")
+    return redirect("https://it114capstone.auth.us-east-1.amazoncognito.com/login?client_id=nni18qf04rvoq1p64edejus30&response_type=code&scope=email+openid+phone&redirect_uri=https%3A%2F%2Faws1.onrender.com%2Floggedin")
 
 @app.route("/register")
 def register():
