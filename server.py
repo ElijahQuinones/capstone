@@ -39,6 +39,7 @@ def login():
             return render_template("dashboard.html")
         else:
             return redirect("https://it114capstone.auth.us-east-1.amazoncognito.com/login?client_id=nni18qf04rvoq1p64edejus30&response_type=code&scope=email+openid+phone&redirect_uri=https%3A%2F%2Faws1.onrender.com%2Floggedin")
+
     
    
         
