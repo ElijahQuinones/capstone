@@ -27,7 +27,7 @@ def login():
 def register():
     return render_template("register.html")
 
-@app.route("/loggedin)
+@app.route("/loggedin")
   def login():
            return render_template("dashboard.html)
 
