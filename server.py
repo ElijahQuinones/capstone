@@ -1,10 +1,7 @@
 from flask import Flask,render_template,url_for,request,redirect
 import sqlite3
 from waitress import serve
-import boto3
-import os
-import json
-import datetime
+from cloudtrail_helper import event_data 
 app = Flask(__name__)
 
 
@@ -53,41 +50,7 @@ def register():
 # Event name parameter is required 
 @app.route("/test/<event_name>")
 def test(event_name):
-    id = os.environ.get('AWS_ACCESS_KEY_ID')
-    key = os.environ.get('AWS_ACCESS_KEY_KEY')
-
-    cloudtrail = boto3.client(
-        'cloudtrail',
-        aws_access_key_id=id,
-        aws_secret_access_key=key,
-    )
-
-    # response = cloudtrail.list_trails(
-    #     NextToken='string'
-    # )
-    # response = cloudtrail.start_query(
-    #     QueryStatement='SELECT * FROM my-0701-cloudtrail*',
-    #     # DeliveryS3Uri='string'
-    # )
-
-    response = cloudtrail.lookup_events(
-        LookupAttributes=[
-            {
-                'AttributeKey': 'EventName',
-                'AttributeValue': event_name
-            },
-        ],
-        # StartTime=datetime.datetime(2022, 12, 1),
-        # EndTime=datetime.datetime(2023, 2, 28),
-        # EventCategory='insight',
-        MaxResults=2,
-        # NextToken='50'
-    )
-    
-    print('Existing trails:')
-    return response
-    # for bucket in response['Buckets']:
-    #     return (f'  {bucket["Name"]}')
+    return event_data(event_name)
 
 @app.route("/metrics", methods = ["GET", "POST"])
 def metrics():
