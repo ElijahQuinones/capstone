@@ -1,29 +1,26 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Table</title>
-  <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.13.2/css/jquery.dataTables.css">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script> 
-  <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.13.2/js/jquery.dataTables.js"></script>
-  <script src="./table.js"></script>
-</head>
-<body> 
-  <table id="example" class="display" style="width:100%">
-    <thead>
-      <tr>
-        <th>Event Version</th>
-        <th>User ID</th>
-        <th>Event Time</th>
-        <th>Event Source</th>
-        <th>Event Name</th>
-        <th>AWS Region</th>
-        <th>Source IP Address</th>
-        <th>User Agent</th>
-      </tr>
-    </thead>
-  </table>
-</body>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>Table</title>
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/dt/jq-3.6.0/dt-1.11.3/datatables.min.css"/>
+  </head>
+  <body>
+    <table id="example" class="display" style="width:100%">
+        <thead>
+            <tr>
+                <th>User Name</th>
+                <th>User ID</th>
+                <th>Event Time</th>
+                <th>Event Name</th>
+                <th>AWS Region</th>
+                <th>Source IP Address</th>
+            </tr>
+        </thead>
+    </table>
+    
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.datatables.net/v/dt/jq-3.6.0/dt-1.11.3/datatables.min.js"></script>
+    <script src="table.js"></script>
+  </body>
 </html>
