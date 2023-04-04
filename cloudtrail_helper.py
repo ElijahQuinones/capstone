@@ -30,7 +30,7 @@ def event_data(event_name, days=7):
     StartTime=datetime.datetime(newdate.year, newdate.month, newdate.day),
     EndTime=datetime.datetime(today.year, today.month, today.day),
     # EventCategory='insight',
-    MaxResults=2,
+    MaxResults=50,
     # NextToken='50'
   )
   
