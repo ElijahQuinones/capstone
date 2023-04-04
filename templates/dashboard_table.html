@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width,initial-scale=1.0">
+        <title>AWS Admin Dashboard</title>
+        <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&display=swap" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined" rel="stylesheet">
+        <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/dt/jq-3.6.0/dt-1.11.3/datatables.min.css"/>
+        <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='dashboard/dashboard.css')}}" />
+    </head>
+    <body>
+        <div class="grid-container">
+            <header class="header">
+                <div class="menu-icon" onclick="openSidebar()">
+                    <span class="material-icons-outlined">menu</span>
+                </div>
+                <div class="header-left">
+                    <span class="material-icons-outlined">search</span>
+                </div>
+                <div class="header-right">
+                    <a style="text-decoration: none; color: #666666;" href="./login.html">
+                        <span class="material-icons-outlined">logout</span>
+                    </a>
+                </div>
+            </header>
+
+            <aside id="sidebar">
+                <div class="sidebar-title">
+                    <div class="sidebar-brand">
+                        <span class="material-icons-outlined">cloud</span> AWS
+                    </div>
+                    <h1 class="menu-close">
+                        <span class="material-icons-outlined" onclick="closeSidebar()">close</span>
+                    </h1>
+                </div>
+                <ul class="sidebar-list">
+                    <a style="text-decoration: none; color: #9799ab;" href="{{ url_for('templates', filename='dashboard.html')}}">
+                        <li class="sidebar-list-item">
+                            <span class="material-icons-outlined">space_dashboard</span> Dashboard
+                        </li>
+                    </a>
+                    <li class="sidebar-list-item">
+                        <a style="text-decoration: none; color: #9799ab;" href="{{ url_for('templates', filename='dashboard_table.html')}}">
+                            <span class="material-icons-outlined">table_view</span> Table
+                        </a>
+                    </li>
+                    <li class="sidebar-list-item">
+                        <span class="material-icons-outlined">show_chart</span> Chart
+                    </li>
+                    <li class="sidebar-list-item">
+                        <span class="material-icons-outlined">settings</span> Settings
+                    </li>
+                </ul>
+            </aside>
+
+            <main class="main-container">
+                <div class="main-title">
+                    <h2>DASHBOARD</h2>
+                </div>
+
+                <table id="example" class="display" style="width:100%">
+                    <thead>
+                        <tr>
+                            <th>User Name</th>
+                            <th>User ID</th>
+                            <th>Event Time</th>
+                            <th>Event Name</th>
+                            <th>AWS Region</th>
+                            <th>Source IP Address</th>
+                        </tr>
+                    </thead>
+                </table>            
+
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+        <script src="https://cdn.datatables.net/v/dt/jq-3.6.0/dt-1.11.3/datatables.min.js"></script>
+        <script src="{{ url_for('static', filename='dashboard/dashboard.js')}}"></script>
+        <script src="{{ url_for('static', filename='dashboard/table.js')}}"></script>
+    
+    </body>
+</html>

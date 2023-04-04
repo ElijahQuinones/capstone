@@ -18,7 +18,9 @@
                     <span class="material-icons-outlined">search</span>
                 </div>
                 <div class="header-right">
-                    <span class="material-icons-outlined">logout</span>
+                    <a style="text-decoration: none; color: #666666;" href="/">
+                        <span class="material-icons-outlined">logout</span>
+                    </a>
                 </div>
             </header>
 
@@ -32,11 +34,14 @@
                     </h1>
                 </div>
                 <ul class="sidebar-list">
+                        <li class="sidebar-list-item">
+                            <span class="material-icons-outlined">space_dashboard</span> Dashboard
+                        </li>
+                    </a>
                     <li class="sidebar-list-item">
-                        <span class="material-icons-outlined">space_dashboard</span> Dashboard
-                    </li>
-                    <li class="sidebar-list-item">
-                        <span class="material-icons-outlined">table_view</span> Table
+                        <a style="text-decoration: none; color: #9799ab;" href="{{ url_for('static', filename='dashboard/table.html')}}">
+                            <span class="material-icons-outlined">table_view</span> Table
+                        </a>
                     </li>
                     <li class="sidebar-list-item">
                         <span class="material-icons-outlined">show_chart</span> Chart
@@ -67,19 +72,20 @@
                         </div>
                         <h1>2</h1>
                     </div> 
-
-                    <div class="charts-card">
-                        <h2 class="charts-title">Table</h2>
-                        <div id="data-table">
-                            <iframe src="{{ url_for('static', filename='dashboard/table.html')}}" onload='javascript:(function(o){o.style.height=o.contentWindow.document.body.scrollHeight+"px";}(this));' style="height:200px;width:100%;border:none;overflow:hidden;"></iframe>
+                    <div class="card">
+                        <a style="text-decoration: none; color: #666666;" href="{{ url_for('static', filename='dashboard/table.html')}}">
+                            <div class="card-inner">
+                                <h3>TABLE</h3>
+                                <h1 class="material-icons-outlined text-blue">table_view</h1>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="card">
+                        <div class="card-inner">
+                            <h3>CHART</h3>
+                            <h1 class="material-icons-outlined text-green">show_chart</h1> 
                         </div> 
-                    </div>
-
-                    <div class="charts-card">
-                        <h2 class="charts-title">Chart</h2>
-                        <div id="line-chart"></div>
-                    </div>
-
+                    </div> 
                 </div>
             </main>
         </div>
