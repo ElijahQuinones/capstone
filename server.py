@@ -1,6 +1,5 @@
 from flask import Flask,render_template,url_for,request,redirect,make_response
 import sqlite3
-from flask_cognito import cognito_auth_required
 from waitress import serve
 import boto3
 import os

@@ -2,7 +2,7 @@ $(document).ready(function() {
     $('#example').DataTable({
         "responsive": true,
         "ajax": {
-            "url": "data.json",
+            "url": "/boto3/cloudtrail/ConsoleLogin/50",
             "dataSrc": "Records"
         },
         "columns": [
