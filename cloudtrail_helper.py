@@ -5,7 +5,7 @@ import datetime
 
 
 # Event date takes an event name and an interger 1-90. The day argument 
-# determines the date range to be logged
+# determines the date range to be logged.
 
 def event_data(event_name, days=7):
   # id = os.getenv("MY_ID")
