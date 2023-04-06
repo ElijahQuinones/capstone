@@ -1,17 +1,22 @@
 $(document).ready(function() {
     $('#example').DataTable({
+        "processing": true,
         "responsive": true,
         "ajax": {
-            "url": "data.json",
-            "dataSrc": "Records"
+            "url": "/boto3/cloudtrail/ConsoleLogin/50",
+            "dataType": "json",
+            "dataSrc": "Events"
         },
         "columns": [
-            { "data": "userIdentity.userName" },
-            { "data": "userIdentity.accountId" },
-            { "data": "eventTime" },
-            { "data": "eventName" },
-            { "data": "awsRegion" },
-            { "data": "sourceIPAddress" }
+            // { "data": "userIdentity.userName" },
+            // { "data": "userIdentity.accountId" },
+            // { "data": "eventTime" },
+            { "data": "EventId" },
+            { "data": "EventName" },
+            { "data": "EventSource" },
+            { "data": "Username" },
+            { "data": "EventTime" },
+
         ]
     });
 });

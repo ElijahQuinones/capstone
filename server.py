@@ -1,6 +1,5 @@
 from flask import Flask,render_template,url_for,request,redirect,make_response
 import sqlite3
-from flask_cognito import cognito_auth_required
 from waitress import serve
 from cloudtrail_helper import event_data 
 app = Flask(__name__)
@@ -37,9 +36,7 @@ def login():
         else:
             return redirect("https://itcapstone.auth.us-east-1.amazoncognito.com/login?client_id=nni18qf04rvoq1p64edejus30&response_type=code&scope=email+openid+phone&redirect_uri=https%3A%2F%2Faws1.onrender.com%2Floggedin")
 
-    
-   
-        
+
         
 
 # Test route where AWS data is displayed. 
@@ -57,6 +54,9 @@ def metrics():
     else:
         return render_template("get_metrics.html")
 
+@app.route("/boto3/cloudtrail/<event_name>/<days>")
+def get_cloudtrail_data(event_name="ConsoleLogin", days=1):
+    return redirect(url_for('test', event_name=event_name, days=days))
 
 if __name__ == '__main__':
     serve(app, host='0.0.0.0', port= 50100, threads =2)

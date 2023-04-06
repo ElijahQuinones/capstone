@@ -8,8 +8,10 @@ import datetime
 # determines the date range to be logged
 
 def event_data(event_name, days=7):
-  id = os.getenv("MY_ID")
-  key = os.getenv("MY_ID_PASS")
+  # id = os.getenv("MY_ID")
+  # key = os.getenv("MY_ID_PASS")  
+  id = "AKIASCGDQLX4TK3YEP7H"
+  key = "ND0LyBOPxrjVqn/sX72yYBaWxdxojakTaomBflSx"
 
   today = datetime.date.today()
   newdate = today - datetime.timedelta(days)
@@ -30,10 +32,10 @@ def event_data(event_name, days=7):
     StartTime=datetime.datetime(newdate.year, newdate.month, newdate.day),
     EndTime=datetime.datetime(today.year, today.month, today.day),
     # EventCategory='insight',
-    MaxResults=50,
+    MaxResults=1000,
     # NextToken='50'
   )
-  
+
   return response
   # for bucket in response['Buckets']:
   #     return (f'  {bucket["Name"]}')
