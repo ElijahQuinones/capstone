@@ -16,11 +16,11 @@
                     <span class="material-icons-outlined">menu</span>
                 </div>
                 <div class="header-left">
-                    <span class="material-icons-outlined">search</span>
+                    <span class="username">Hello "username_here" !</span>
                 </div>
-                <div class="header-right">
-                    <a style="text-decoration: none; color: #666666;" href="./login.html">
-                        <span class="material-icons-outlined">logout</span>
+                    <a style="text-decoration: none; color: #666666;" href="{{ url_for('login')}}">
+                        <div class="header-right">
+                            <span class="material-icons-outlined">logout</span>
                     </a>
                 </div>
             </header>
@@ -34,48 +34,57 @@
                         <span class="material-icons-outlined" onclick="closeSidebar()">close</span>
                     </h1>
                 </div>
+                
                 <ul class="sidebar-list">
-                    <a style="text-decoration: none; color: #9799ab;" href="{{ url_for('templates', filename='dashboard.html')}}">
+                    <a style="text-decoration: none; color: #9799ab;" href="{{ url_for('dashboard')}}">
                         <li class="sidebar-list-item">
                             <span class="material-icons-outlined">space_dashboard</span> Dashboard
                         </li>
                     </a>
-                    <li class="sidebar-list-item">
-                        <a style="text-decoration: none; color: #9799ab;" href="{{ url_for('templates', filename='dashboard_table.html')}}">
-                            <span class="material-icons-outlined">table_view</span> Table
-                        </a>
-                    </li>
-                    <li class="sidebar-list-item">
-                        <span class="material-icons-outlined">show_chart</span> Chart
-                    </li>
-                    <li class="sidebar-list-item">
-                        <span class="material-icons-outlined">settings</span> Settings
-                    </li>
+                    <a style="text-decoration: none; color: #9799ab;" href="">
+                        <li class="sidebar-list-item">
+                            <span class="material-icons-outlined">table_view</span> Chart & Table
+                        </li>
+                    </a>
+                    <a style="text-decoration: none; color: #9799ab;" href="{{ url_for('login')}}">
+                        <li class="sidebar-list-item">
+                            <span class="material-icons-outlined">logout</span> Logout
+                        </li>
+                    </a>
                 </ul>
             </aside>
 
             <main class="main-container">
                 <div class="main-title">
-                    <h2>DASHBOARD</h2>
+                    <h2>CHART & TABLE</h2>
                 </div>
 
-                <table id="example" class="display" style="width:100%">
-                    <thead>
-                        <tr>
-                            <th>User Name</th>
-                            <th>User ID</th>
-                            <th>Event Time</th>
-                            <th>Event Name</th>
-                            <th>AWS Region</th>
-                            <th>Source IP Address</th>
-                        </tr>
-                    </thead>
-                </table>            
+                <div class="chart">
+                    <div class="chart-card">
+                        <div class="card-inner">
+                        </div>
+                            <table id="example" class="display" style="width:100%">
+                                <thead>
+                                    <tr>
+                                        <th>Username</th>
+                                        <th>User ID</th>
+                                        <th>Event Time</th>
+                                        <th>Event Name</th>
+                                        <th>AWS Region</th>
+                                        <th>Source IP Address</th>
+                                    </tr>
+                                </thead>
+                            </table>
+                        </div>
+                    </div>
+                
+            </main>
+        </div>
 
         <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-        <script src="https://cdn.datatables.net/v/dt/jq-3.6.0/dt-1.11.3/datatables.min.js"></script>
+        <script src="https://cdn.datatables.net/v/dt/jq-3.6.0/dt-1.11.3/datatables.min.js"></script>  
+        <script src="https://code.highcharts.com/highcharts.js"></script>
         <script src="{{ url_for('static', filename='dashboard/dashboard.js')}}"></script>
-        <script src="{{ url_for('static', filename='dashboard/table.js')}}"></script>
-    
+
     </body>
 </html>
