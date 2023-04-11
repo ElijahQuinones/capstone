@@ -23,8 +23,7 @@ $(document).ready(function() {
         "autoWidth": true,
         "scrollX": true,
         "ajax": {
-        //  "url": "/boto3/cloudtrail/ConsoleLogin/50",
-            "url": "data.json",
+            "url": "/boto3/cloudtrail/ConsoleLogin/50",
             "dataSrc": "Records"
         },
         "columns": [
