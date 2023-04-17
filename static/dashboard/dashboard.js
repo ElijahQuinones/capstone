@@ -22,9 +22,10 @@ $(document).ready(function() {
         "responsive": true,
         "autoWidth": true,
         "scrollX": true,
-        "ajax": {
-            "url": "/boto3/cloudtrail/ConsoleLogin/50",
-            "dataSrc": "Records"
+        "ajax": "{{ url_for('static', filename='dashboard/data.json')}}"
+//        "ajax": {
+//            "url": "/boto3/cloudtrail/ConsoleLogin/50",
+//            "dataSrc": "Records"
         },
         "columns": [
             { "data": "userIdentity.userName" },
