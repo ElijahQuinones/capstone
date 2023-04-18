@@ -22,7 +22,10 @@ $(document).ready(function() {
         "responsive": true,
         "autoWidth": true,
         "scrollX": true,
-        "ajax": "{{ url_for('static', filename='dashboard/data.json')}}",
+        "ajax":{
+            url:"http://localhost:50100/static/dashboard/data.json",
+            "dataSrc": "Records"
+        },
 //        "ajax": {
 //            "url": "/boto3/cloudtrail/ConsoleLogin/50",
 //            "dataSrc": "Records"
