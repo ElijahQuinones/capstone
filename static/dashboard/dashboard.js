@@ -23,7 +23,7 @@ $(document).ready(function() {
         "autoWidth": true,
         "scrollX": true,
         "ajax":{
-            url:"http://localhost:50100/static/dashboard/data.json",
+            url:"https://aws1.onrender.com/static/dashboard/data.json",
             "dataSrc": "Records"
         },
 //        "ajax": {
