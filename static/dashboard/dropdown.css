@@ -1,0 +1,34 @@
+.dropdown-customizable {
+  position: relative;
+  display: inline-block;
+}
+
+.dropdown-customizable select {
+  font-size: 16px;
+  padding: 10px;
+  width: 100%;
+  border: none;
+  border-radius: 5px;
+  background-color: #fff;
+  color: #555;
+  box-shadow: 0px 0px 5px rgba(0,0,0,0.1);
+}
+
+/* Submit button */
+.submitButton-customizable {
+  font-size: 14px;
+  font-weight: bold;
+  margin: 20px 0px 10px 0px;
+  height: 40px;
+  width: 100%;
+  color: #fff;
+  background-color: #337ab7;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.submitButton-customizable:hover {
+  color: #fff;
+  background-color: #286090;
+}

@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Drop-down and Submit Button </title>
+    <link rel="stylesheet" type="text/css" href="/login.css">
+
+</head>
+<body>
+	<form action="" method="post">
+		<label for="records">Select a record:</label>
+		<select id="records" name="records">
+			<option value="">--Select a record--</option>
+			<option value='{"eventVersion":"1.08","userIdentity":{"type":"Root","principalId":"142143938041","arn":"arn:aws:iam::142143938041:root","accountId":"142143938041","accessKeyId":"AKIASCGDQLX4U2YKXCRA"},"eventTime":"2022-11-20T23:23:05Z","eventSource":"s3.amazonaws.com","eventName":"DeleteBucket","awsRegion":"us-east-1","sourceIPAddress":"100.0.161.202","userAgent":"[aws-cli/2.4.16 Python/3.8.8 Darwin/22.1.0 exe/x86_64 prompt/off command/s3api.delete-bucket]","requestParameters":{"bucketName":"my-it456-bucket-clock","Host":"my-it456-bucket-clock.s3.us-east-1.amazonaws.com"}}'>Record 1</option>
+			<option value='{"eventVersion":"1.08","userIdentity":{"type":"Root","principalId":"142143938041","arn":"arn:aws:iam::142143938041:root","accountId":"142143938041","accessKeyId":"AKIASCGDQLX4U2YKXCRA"},"eventTime":"2022-11-20T23:24:33Z","eventSource":"s3.amazonaws.com","eventName":"CreateBucket","awsRegion":"us-east-1","sourceIPAddress":"100.0.161.202","userAgent":"[aws-cli/2.4.16 Python/3.8.8 Darwin/22.1.0 exe/x86_64 prompt/off command/s3.mb]","requestParameters":{"bucketName":"my-it-456-bucket-0304-444","Host":"my-it-456-bucket-0304-444.s3.us-east-1.amazonaws.com"}}'>Record 2</option>
+		</select>
+		<br><br>
+		<input type="submit" value="Submit">
+	</form>
+</body>
+</html>
