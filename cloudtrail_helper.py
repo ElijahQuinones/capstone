@@ -7,7 +7,7 @@ import datetime
 # Event date takes an event name and an interger 1-90. The day argument 
 # determines the date range to be logged.
 
-def event_data(event_name, days=7):
+def event_data(event_name, days):
   # id = os.getenv("MY_ID")
   # key = os.getenv("MY_ID_PASS")  
   id = "AKIASCGDQLX4TK3YEP7H"
@@ -29,8 +29,11 @@ def event_data(event_name, days=7):
         'AttributeValue': event_name
       },
     ],
+
     StartTime=datetime.datetime(newdate.year, newdate.month, newdate.day),
-    EndTime=datetime.datetime(today.year, today.month, today.day),
+    # EndTime=datetime.datetime(2023, 4, 7),
+    # StartTime=datetime.datetime(newdate.year, newdate.month, newdate.day),
+    # EndTime=datetime.datetime(today.year, today.month, today.day),
     # EventCategory='insight',
     MaxResults=1000,
     # NextToken='50'

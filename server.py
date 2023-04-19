@@ -37,13 +37,11 @@ def login():
             return redirect("https://itcapstone.auth.us-east-1.amazoncognito.com/login?client_id=nni18qf04rvoq1p64edejus30&response_type=code&scope=email+openid+phone&redirect_uri=https%3A%2F%2Faws1.onrender.com%2Floggedin")
 
 
-        
-
 # Test route where AWS data is displayed. 
 # Event name parameter is required 
 @app.route("/test/<event_name>")
-def test(event_name):
-    return event_data(event_name)
+def test(event_name, days=7):
+    return event_data(event_name, days)
 
 @app.route("/metrics", methods = ["GET", "POST"])
 def metrics():
@@ -55,8 +53,11 @@ def metrics():
         return render_template("get_metrics.html")
 
 @app.route("/boto3/cloudtrail/<event_name>/<days>")
-def get_cloudtrail_data(event_name="ConsoleLogin", days=1):
+def get_cloudtrail_data(event_name="ConsoleLogin", days=7):
+    # limit days to 90 
+    # Try Catch statement
     return redirect(url_for('test', event_name=event_name, days=days))
 
 if __name__ == '__main__':
     serve(app, host='0.0.0.0', port= 50100, threads =2)
+    
