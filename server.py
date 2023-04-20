@@ -37,26 +37,32 @@ def login():
             return redirect("https://itcapstone.auth.us-east-1.amazoncognito.com/login?client_id=nni18qf04rvoq1p64edejus30&response_type=code&scope=email+openid+phone&redirect_uri=https%3A%2F%2Faws1.onrender.com%2Floggedin")
 
 
-# Test route where AWS data is displayed. 
+# get_data is for testing purposes 
 # Event name parameter is required 
-@app.route("/test/<event_name>")
-def test(event_name, days=7):
+@app.route("/getData/<event_name>/<int:days>")
+def get_data(event_name, days):
     return event_data(event_name, days)
 
 @app.route("/metrics", methods = ["GET", "POST"])
 def metrics():
     if  request.method == "POST":
-        input = request.form['event_name']
+        event_name_input = request.form['event_name_input']
+        days_input = request.form['days_input']
         print(input)
-        return redirect(url_for('test', event_name=input))
+        return redirect(url_for('get_data', event_name=event_name_input, 
+                                days=days_input))
     else:
         return render_template("get_metrics.html")
 
-@app.route("/boto3/cloudtrail/<event_name>/<days>")
-def get_cloudtrail_data(event_name="ConsoleLogin", days=7):
+@app.route("/boto3/cloudtrail/<event_name>/<int:days>")
+def get_cloudtrail_data(event_name, days):
     # limit days to 90 
     # Try Catch statement
-    return redirect(url_for('test', event_name=event_name, days=days))
+    # print("The event name is " + event_name)
+    # print("The days variable contains " + str(days))
+    return event_data(event_name, days)
+
+    # return redirect(url_for('get_data', event_name=event_name, days=days))
 
 if __name__ == '__main__':
     serve(app, host='0.0.0.0', port= 50100, threads =2)

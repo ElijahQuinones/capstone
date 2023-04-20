@@ -8,10 +8,8 @@ import datetime
 # determines the date range to be logged.
 
 def event_data(event_name, days):
-  # id = os.getenv("MY_ID")
-  # key = os.getenv("MY_ID_PASS")  
-  id = "AKIASCGDQLX4TK3YEP7H"
-  key = "ND0LyBOPxrjVqn/sX72yYBaWxdxojakTaomBflSx"
+  id = os.getenv("MY_ID")
+  key = os.getenv("MY_ID_PASS")  
 
   today = datetime.date.today()
   newdate = today - datetime.timedelta(days)

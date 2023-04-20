@@ -3,7 +3,7 @@ $(document).ready(function() {
         "processing": true,
         "responsive": true,
         "ajax": {
-            "url": "/boto3/cloudtrail/<event_name>/<days>",
+            "url": "/boto3/cloudtrail/ConsoleLogin/7",
             "dataType": "json",
             "dataSrc": "Events"
         },
