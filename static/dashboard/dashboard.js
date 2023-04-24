@@ -16,33 +16,65 @@ function closeSidebar() {
     }
 }
 
+// Event and day selection drop-down menu
+var events = new XMLHttpRequest();
+events.onreadystatechange = function() {
+    if (this.readyState == 4 && this.status == 200) {
+        var options = this.responseText.split("\n");
+        var select = document.getElementById("eventsSelect");
+        for(var i = 0; i < options.length; i++) {
+            var option = document.createElement("option");
+            option.text = options[i];
+            select.add(option);
+        }
+    }
+};
+events.open("GET", "{{ url_for('static', filename='dashboard/events.txt')}}", true);
+events.send();
+
+var days = new XMLHttpRequest();
+days.onreadystatechange = function() {
+    if (this.readyState == 4 && this.status == 200) {
+        var options = this.responseText.split("\n");
+        var select = document.getElementById("daysSelect");
+        for(var i = 0; i < options.length; i++) {
+            var option = document.createElement("option");
+            option.text = options[i];
+            select.add(option);
+        }
+    }
+};
+days.open("GET", "{{ url_for('static', filename='dashboard/days.txt')}}", true);
+days.send();
+
 // Datatables.net integration
 $(document).ready(function() {
     var table = $('#example').DataTable({
         "responsive": true,
         "autoWidth": true,
         "scrollX": true,
-        "ajax": {
-            "url": "{{ url_for('static', filename='dashboard/data.json')}}",
-            "dataSrc": "Records"
-        },
 //        "ajax": {
-//            "url": "/boto3/cloudtrail/ConsoleLogin/50",
+//            "url": "{{ url_for('static', filename='dashboard/data.json')}}",
 //            "dataSrc": "Records"
 //        },
+        "ajax": {
+            "url": "/boto3/cloudtrail/ConsoleLogin/7",
+            "dataType": "json",
+            "dataSrc": "Events"
+        },
         "columns": [
-            { "data": "userIdentity.userName" },
-            { "data": "userIdentity.accountId" },
-            { "data": "eventTime" },
-            { "data": "eventName" },
-            { "data": "awsRegion" },
-            { "data": "sourceIPAddress" }
+            { "data": "Username" },
+            { "data": "EventId" },
+            { "data": "EventSource" },
+            { "data": "EventTime" },
+
         ]
     });
 
-    // Beginning of HighCharts integration (with steps)
-    // Create the chart with initial data
-    var container = $('<div/>').insertBefore(table.table().container());
+
+// Beginning of HighCharts integration (with steps)
+// Create the chart with initial data
+var container = $('<div/>').insertBefore(table.table().container());
  
     var chart = Highcharts.chart(container[0], {
         chart: {

@@ -7,7 +7,9 @@
         <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&display=swap" rel="stylesheet">
         <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined" rel="stylesheet">
         <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/dt/jq-3.6.0/dt-1.11.3/datatables.min.css"/>
+<!--    <link rel="stylesheet" type="text/css" href="dashboard.css" /> -->
         <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='dashboard/dashboard.css')}}" />
+
     </head>
     <body>
         <div class="grid-container">
@@ -18,7 +20,7 @@
                 <div class="header-left">
                     <span class="username">Hello "username_here" !</span>
                 </div>
-                    <a style="text-decoration: none; color: #666666;" href="./">
+                    <a style="text-decoration: none; color: #666666;" href="">
                         <div class="header-right">
                             <span class="material-icons-outlined">logout</span>
                     </a>
@@ -36,12 +38,12 @@
                 </div>
                 
                 <ul class="sidebar-list">
-
+                    <a style="text-decoration: none; color: #9799ab;" href="">
                         <li class="sidebar-list-item">
                             <span class="material-icons-outlined">space_dashboard</span> Dashboard
                         </li>
-
-                    <a style="text-decoration: none; color: #9799ab;" href="./">
+                    </a>
+                    <a style="text-decoration: none; color: #9799ab;" href="login.html">
                         <li class="sidebar-list-item">
                             <span class="material-icons-outlined">logout</span> Logout
                         </li>
@@ -60,23 +62,33 @@
                             <h3>EVENTS</h3>
                             <span class="material-icons-outlined text-orange">event</span>
                         </div>
-                        <h1>"events_number_here"</h1>
+                        <h1>"events_here"</h1>
                     </div>
                     <div class="card">
                         <div class="card-inner">
                             <h3>ALERTS</h3>
                             <span class="material-icons-outlined text-red">announcement</span>
                         </div>
-                        <h1>"alerts_number_here"</h1>
+                        <h1>"alerts_here"</h1>
                     </div>
                     <div class="card">
                         <div class="card-inner">
                             <h3>EVENT SELECTION</h3>
                             <span class="material-icons-outlined text-blue">search</span>
                         </div>
-                        <h3>"drop_down_list_here"</h3>
+                        
+                        <form class="dropdown-customizable" action="" method="post">
+                            <select id="eventsSelect"></select>
+                            <br></br>
+                            <select id="daysSelect"></select>                                    
+                                        
+                            </select>
+                            <br><br>
+                            <input class="submitButton-customizable" type="submit" value="Submit">
+                        </form>
                     </div>
-
+                </div>
+                <br>
                 <div class="chart">
                     <div class="chart-card">
                         <div class="card-inner">
@@ -86,11 +98,9 @@
                                 <thead>
                                     <tr>
                                         <th>Username</th>
-                                        <th>User ID</th>
-                                        <th>Event Time</th>
-                                        <th>Event Name</th>
-                                        <th>AWS Region</th>
-                                        <th>Source IP Address</th>
+                                        <th>EventId</th>
+                                        <th>EventSource</th>
+                                        <th>EventTime</th>
                                     </tr>
                                 </thead>
                             </table>
@@ -103,6 +113,8 @@
         <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
         <script src="https://cdn.datatables.net/v/dt/jq-3.6.0/dt-1.11.3/datatables.min.js"></script>  
         <script src="https://code.highcharts.com/highcharts.js"></script>
+<!--        <script src="dashboard.js"></script> -->
         <script src="{{ url_for('static', filename='dashboard/dashboard.js')}}"></script>
+
     </body>
 </html>

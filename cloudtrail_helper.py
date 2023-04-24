@@ -1,5 +1,6 @@
 import boto3
 import os
+from dotenv import load_dotenv
 import json
 import datetime
 
@@ -8,8 +9,8 @@ import datetime
 # determines the date range to be logged.
 
 def event_data(event_name, days):
-  id = os.getenv("MY_ID")
-  key = os.getenv("MY_ID_PASS")  
+  id = os.environ.get("MY_ID")
+  key = os.environ.get("MY_ID_PASS")
 
   today = datetime.date.today()
   newdate = today - datetime.timedelta(days)
