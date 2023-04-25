@@ -1,10 +1,7 @@
 from flask import Flask,render_template,url_for,request,redirect,make_response
 import sqlite3
 from waitress import serve
-import boto3
-import os
-import json
-import datetime
+from cloudtrail_helper import event_data 
 app = Flask(__name__)
 
 
@@ -31,7 +28,7 @@ def register():
     
     return render_template("register.html")
 
-@app.route("/loggedin")
+@app.route("/loggedin", methods = ['GET','POST'])
 def login():
         have_code = request.args.get('code')
         if have_code:
@@ -39,61 +36,35 @@ def login():
         else:
             return redirect("https://itcapstone.auth.us-east-1.amazoncognito.com/login?client_id=nni18qf04rvoq1p64edejus30&response_type=code&scope=email+openid+phone&redirect_uri=https%3A%2F%2Faws1.onrender.com%2Floggedin")
 
-    
 
-   
-        
-        
 
-# Test route where AWS data is displayed. 
+# get_data is for testing purposes 
 # Event name parameter is required 
-@app.route("/test/<event_name>")
-def test(event_name):
-    id = os.environ.get('AWS_ACCESS_KEY_ID')
-    key = os.environ.get('AWS_ACCESS_KEY_KEY')
-
-    cloudtrail = boto3.client(
-        'cloudtrail',
-        aws_access_key_id=id,
-        aws_secret_access_key=key,
-    )
-
-    # response = cloudtrail.list_trails(
-    #     NextToken='string'
-    # )
-    # response = cloudtrail.start_query(
-    #     QueryStatement='SELECT * FROM my-0701-cloudtrail*',
-    #     # DeliveryS3Uri='string'
-    # )
-
-    response = cloudtrail.lookup_events(
-        LookupAttributes=[
-            {
-                'AttributeKey': 'EventName',
-                'AttributeValue': event_name
-            },
-        ],
-        # StartTime=datetime.datetime(2022, 12, 1),
-        # EndTime=datetime.datetime(2023, 2, 28),
-        # EventCategory='insight',
-        MaxResults=2,
-        # NextToken='50'
-    )
-    
-    print('Existing trails:')
-    return response
-    # for bucket in response['Buckets']:
-    #     return (f'  {bucket["Name"]}')
+@app.route("/getData/<event_name>/<int:days>")
+def get_data(event_name, days):
+    return event_data(event_name, days)
 
 @app.route("/metrics", methods = ["GET", "POST"])
 def metrics():
     if  request.method == "POST":
-        input = request.form['event_name']
+        event_name_input = request.form['event_name_input']
+        days_input = request.form['days_input']
         print(input)
-        return redirect(url_for('test', event_name=input))
+        return redirect(url_for('get_data', event_name=event_name_input, 
+                                days=days_input))
     else:
         return render_template("get_metrics.html")
 
+@app.route("/boto3/cloudtrail/<event_name>/<int:days>")
+def get_cloudtrail_data(event_name, days):
+    # limit days to 90 
+    # Try Catch statement
+    # print("The event name is " + event_name)
+    # print("The days variable contains " + str(days))
+    return event_data(event_name, days)
+
+    # return redirect(url_for('get_data', event_name=event_name, days=days))
 
 if __name__ == '__main__':
     serve(app, host='0.0.0.0', port= 50100, threads =2)
+    

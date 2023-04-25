@@ -26,23 +26,24 @@ $(document).ready(function() {
             url:"https://aws1.onrender.com/static/dashboard/data.json",
             "dataSrc": "Records"
         },
-//        "ajax": {
-//            "url": "/boto3/cloudtrail/ConsoleLogin/50",
-//            "dataSrc": "Records"
-//        },
+        "ajax": {
+            "url": "/boto3/cloudtrail/ConsoleLogin/7",
+            "dataType": "json",
+            "dataSrc": "Events"
+        },
         "columns": [
-            { "data": "userIdentity.userName" },
-            { "data": "userIdentity.accountId" },
-            { "data": "eventTime" },
-            { "data": "eventName" },
-            { "data": "awsRegion" },
-            { "data": "sourceIPAddress" }
+            { "data": "Username" },
+            { "data": "EventId" },
+            { "data": "EventSource" },
+            { "data": "EventTime" },
+
         ]
     });
 
-    // Beginning of HighCharts integration (with steps)
-    // Create the chart with initial data
-    var container = $('<div/>').insertBefore(table.table().container());
+
+// Beginning of HighCharts integration (with steps)
+// Create the chart with initial data
+var container = $('<div/>').insertBefore(table.table().container());
  
     var chart = Highcharts.chart(container[0], {
         chart: {

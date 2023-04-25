@@ -1,3 +1,4 @@
+/* Dashboard styling */
 body {
     margin: 0;
     padding: 0;
@@ -17,7 +18,7 @@ body {
 }
 
 .text-blue {
-    color: #246dec;
+    color: #337ab7;
 }
 
 .text-red {
@@ -36,6 +37,7 @@ body {
     font-weight: 600;
 }
 
+/* Establish CSS grid for card/chart elements */
 .grid-container {
     display: grid;
     grid-template-columns: 260px 1fr 1fr;
@@ -47,6 +49,7 @@ body {
     height: 100vh;
 }
 
+  /* Header styling */
 .header {
     grid-area: header;
     height: 70px;
@@ -77,6 +80,7 @@ body {
     display: none;
 }
 
+/* Sidebar format and styling */
 #sidebar {
     grid-area: sidebar;
     height: 100%;
@@ -130,6 +134,7 @@ body {
     z-index: 12 !important;
 }
 
+/* Main grid container format and styling */
 .main-container {
     grid-area: main;
     overflow-y: auto;
@@ -148,6 +153,7 @@ body {
     margin: 20px 0;
 }
 
+/* Card format and styling */
 .card {
     display: flex;
     flex-direction: column;
@@ -168,7 +174,7 @@ body {
 }
 
 .card:nth-child(3) {
-    border-left: 7px solid blue;
+    border-left: 7px solid #337ab7;
 }
 
 .card:nth-child(4) {
@@ -190,6 +196,7 @@ body {
     font-size: 35px;
 }
 
+/* Chart format and styling */
 .chart {
     display: flex;
     flex-direction: column;
@@ -206,6 +213,43 @@ body {
     font-weight: 600;
 }
 
+/* Event selection drop-down format and styling */
+.dropdown-customizable {
+    position: relative;
+    display: inline-block;
+  }
+  
+.dropdown-customizable select {
+    font-size: 16px;
+    padding: 10px;
+    width: 100%;
+    border: none;
+    border-radius: 5px;
+    background-color: #fff;
+    color: #555;
+    box-shadow: 0px 0px 5px rgba(0,0,0,0.1);
+  }
+  
+  /* Submit button */
+  .submitButton-customizable {
+    font-size: 14px;
+    font-weight: bold;
+    margin: 20px 0px 10px 0px;
+    height: 40px;
+    width: 100%;
+    color: #fff;
+    background-color: #337ab7;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  .submitButton-customizable:hover {
+    color: #fff;
+    background-color: #286090;
+  }
+
+/* Media queries to ensure responsiveness at any screen size  */
 @media screen and (max-width: 950px) {
     .grid-container {
         grid-template-columns: 1fr;
