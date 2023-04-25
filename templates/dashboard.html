@@ -11,7 +11,7 @@
         <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='dashboard/dashboard.css')}}" />
 
     </head>
-    <body>
+    <body onload ="hide()">
         <div class="grid-container">
             <header class="header">
                 <div class="menu-icon" onclick="openSidebar()">
@@ -77,13 +77,13 @@
                             <span class="material-icons-outlined text-blue">search</span>
                         </div>
                         
-                        <form action="" method="post">
+                        <form method="post" id="enventForm">
                             <label for="records">Select a record:</label>
                             <select id="operations" name="operations">
                                 <option value="">-- Select event name --</option>
                             </select>
                         </form>
-                    
+                        <button onClick="window.location.reload();" id = "refresh">Refresh Page</button>
                         <script>
                             // Read the event names from the file
                             fetch("{{ url_for('static', filename='dashboard/events.txt')}}")
@@ -103,16 +103,16 @@
                                 });
                         </script>        
                         
-                        <form action="" method="post">
+                        <!-- form method="post" id ="dayForm">
                             <label for="records">Select a record:</label>
                             <select id="days" name="days">
                                 <option value="">-- Select number of days --</option>
                             </select>
                             <br><br>
                             <input type="submit" value="Submit">
-                        </form>
+                        </form> -->
                     
-                        <script>
+                       <!--  <script>
                             // Read the event names from the file
                             fetch("{{ url_for('static', filename='dashboard/days.txt')}}")
                                 .then(response => response.text())
@@ -129,12 +129,13 @@
                                         dropdown2.appendChild(option2);
                                     });
                                 });
-                        </script>  
-
+                        </script>  --> 
+                    
                     </div>
+                    
                 </div>
                 <br>
-                <div class="chart">
+                <div class="chart" id="chart">
                     <div class="chart-card">
                         <div class="card-inner">
                             <p class="chart-title">CHART & TABLE</p>
@@ -143,6 +144,7 @@
                                 <thead>
                                     <tr>
                                         <th>Username</th>
+                                        
                                         <th>EventId</th>
                                         <th>EventSource</th>
                                         <th>EventTime</th>
@@ -154,7 +156,7 @@
                 
             </main>
         </div>
-
+        
         <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
         <script src="https://cdn.datatables.net/v/dt/jq-3.6.0/dt-1.11.3/datatables.min.js"></script>  
         <script src="https://code.highcharts.com/highcharts.js"></script>

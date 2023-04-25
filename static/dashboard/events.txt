@@ -2666,6 +2666,7 @@ StartNotebookInstance
 StartOnDemandAuditTask
 StartPipelineExecution
 StartPipelineReprocessing
+StartQuery
 StartQueryExecution
 StartReplicationRun
 StartReplicationTask

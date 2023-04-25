@@ -1,33 +1,42 @@
 // Sidebar functionality
 var sidebarOpen = false;
 var sidebar = document.getElementById("sidebar");
-
+function refresh(){
+    window.location.reload();
+}
 function openSidebar() {
     if(!sidebarOpen) {
         sidebar.classList.add("sidebar-responsive");
         sidebarOpen = true;
     }
 }
-
+function hide(){
+    document.getElementById("chart").style.display ="none";
+    document.getElementById("refresh").style.display ="none";
+}
 function closeSidebar() {
     if(sidebarOpen) {
         sidebar.classList.remove("sidebar-responsive")
         sidebarOpen = false;
     }
 }
-
+var counter = 1;
+const dropdown = document.getElementById("operations");
+let selectedValue = dropdown.value;
+let usedValue = null;
+dropdown.addEventListener('change',function() {
+    selectedValue = dropdown.value;
+    console.log(counter)
+    console.log("selcted value" + selectedValue);
+    
 // Datatables.net integration
-$(document).ready(function() {
+    
     var table = $('#example').DataTable({
         "responsive": true,
         "autoWidth": true,
         "scrollX": true,
-        "ajax":{
-            url:"https://aws1.onrender.com/static/dashboard/data.json",
-            "dataSrc": "Records"
-        },
         "ajax": {
-            "url": "/boto3/cloudtrail/ConsoleLogin/90",
+            "url": "/boto3/cloudtrail/"+selectedValue+"/90",
             "dataType": "json",
             "dataSrc": "Events"
         },
@@ -38,9 +47,8 @@ $(document).ready(function() {
             { "data": "EventTime" },
 
         ]
-    });
-
-
+    
+});
 // Beginning of HighCharts integration (with steps)
 // Create the chart with initial data
 var container = $('<div/>').insertBefore(table.table().container());
@@ -63,6 +71,10 @@ var container = $('<div/>').insertBefore(table.table().container());
     table.on('draw', function () {
         chart.series[0].setData(chartData(table));
     });
+    document.getElementById("chart").style.display ="block";
+    document.getElementById("refresh").style.display ="block";
+    document.getElementById('enventForm').hidden = true;
+    document.getElementById("refresh").hidden = false;
 });
 
 function chartData(table) {
