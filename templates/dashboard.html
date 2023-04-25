@@ -20,7 +20,7 @@
                 <div class="header-left">
                     <span class="username">Hello!</span>
                 </div>
-                    <a style="text-decoration: none; color: #666666;" href="">
+                    <a style="text-decoration: none; color: #666666;" href="./">
                         <div class="header-right">
                             <span class="material-icons-outlined">logout</span>
                     </a>
@@ -43,7 +43,7 @@
                             <span class="material-icons-outlined">space_dashboard</span> Dashboard
                         </li>
                     </a>
-                    <a style="text-decoration: none; color: #9799ab;" href="login.html">
+                    <a style="text-decoration: none; color: #9799ab;" href="./">
                         <li class="sidebar-list-item">
                             <span class="material-icons-outlined">logout</span> Logout
                         </li>
@@ -64,26 +64,20 @@
                         </div>
                         <h1>"events_here"</h1>
                     </div>
-                    <div class="card">
-                        <div class="card-inner">
-                            <h3>ALERTS</h3>
-                            <span class="material-icons-outlined text-red">announcement</span>
-                        </div>
-                        <h1>"alerts_here"</h1>
-                    </div>
+                    
                     <div class="card">
                         <div class="card-inner">
                             <h3>EVENT SELECTION</h3>
                             <span class="material-icons-outlined text-blue">search</span>
                         </div>
-                        
-                        <form method="post" id="enventForm">
-                            <label for="records">Select a record:</label>
-                            <select id="operations" name="operations">
-                                <option value="">-- Select event name --</option>
-                            </select>
-                        </form>
-                        <button onClick="window.location.reload();" id = "refresh">Refresh Page</button>
+                        <div class="dropdown-customizable">
+                            <form method="post" id="enventForm">
+                                <select id="operations" name="operations">
+                                    <option value="">-- Select EventName --</option>
+                                </select>
+                            </form>
+                        </div>
+                        <button onClick="window.location.reload();" id = "refresh">Change EventName</button>
                         <script>
                             // Read the event names from the file
                             fetch("{{ url_for('static', filename='dashboard/events.txt')}}")
@@ -144,7 +138,7 @@
                                 <thead>
                                     <tr>
                                         <th>Username</th>
-                                        
+                                        <th>EventName</th>
                                         <th>EventId</th>
                                         <th>EventSource</th>
                                         <th>EventTime</th>
