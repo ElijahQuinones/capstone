@@ -28,7 +28,7 @@ def register():
     
     return render_template("register.html")
 
-@app.route("/loggedin")
+@app.route("/loggedin", methods = ['GET','POST'])
 def login():
         have_code = request.args.get('code')
         if have_code:

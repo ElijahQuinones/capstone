@@ -3,14 +3,15 @@ import os
 from dotenv import load_dotenv
 import json
 import datetime
+load_dotenv(".env")
 
 
 # Event date takes an event name and an interger 1-90. The day argument 
 # determines the date range to be logged.
 
 def event_data(event_name, days):
-  id = os.environ.get("MY_ID")
-  key = os.environ.get("MY_ID_PASS")
+  id = os.getenv("MY_ID")
+  key = os.getenv("MY_ID_PASS")
 
   today = datetime.date.today()
   newdate = today - datetime.timedelta(days)

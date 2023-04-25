@@ -1,4 +1,3 @@
--- Select event name --
 AbortDocumentVersionUpload
 AbortEnvironmentUpdate
 AbortMultipartUpload

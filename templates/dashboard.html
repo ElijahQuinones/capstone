@@ -18,7 +18,7 @@
                     <span class="material-icons-outlined">menu</span>
                 </div>
                 <div class="header-left">
-                    <span class="username">Hello "username_here" !</span>
+                    <span class="username">Hello!</span>
                 </div>
                     <a style="text-decoration: none; color: #666666;" href="">
                         <div class="header-right">
@@ -77,15 +77,60 @@
                             <span class="material-icons-outlined text-blue">search</span>
                         </div>
                         
-                        <form class="dropdown-customizable" action="" method="post">
-                            <select id="eventsSelect"></select>
-                            <br></br>
-                            <select id="daysSelect"></select>                                    
-                                        
+                        <form action="" method="post">
+                            <label for="records">Select a record:</label>
+                            <select id="operations" name="operations">
+                                <option value="">-- Select event name --</option>
+                            </select>
+                        </form>
+                    
+                        <script>
+                            // Read the event names from the file
+                            fetch("{{ url_for('static', filename='dashboard/events.txt')}}")
+                                .then(response => response.text())
+                                .then(text => {
+                                    // Split the text into an array of event names
+                                    const eventNames = text.split('\n');
+                    
+                                    // Loop through the event names and add an option to the dropdown for each one
+                                    const dropdown = document.getElementById('operations');
+                                    eventNames.forEach(name => {
+                                        const option = document.createElement('option');
+                                        option.value = name;
+                                        option.textContent = name;
+                                        dropdown.appendChild(option);
+                                    });
+                                });
+                        </script>        
+                        
+                        <form action="" method="post">
+                            <label for="records">Select a record:</label>
+                            <select id="days" name="days">
+                                <option value="">-- Select number of days --</option>
                             </select>
                             <br><br>
-                            <input class="submitButton-customizable" type="submit" value="Submit">
+                            <input type="submit" value="Submit">
                         </form>
+                    
+                        <script>
+                            // Read the event names from the file
+                            fetch("{{ url_for('static', filename='dashboard/days.txt')}}")
+                                .then(response => response.text())
+                                .then(text => {
+                                    // Split the text into an array of event names
+                                    const days = text.split('\n');
+                    
+                                    // Loop through the event names and add an option to the dropdown for each one
+                                    const dropdown2 = document.getElementById('days');
+                                    days.forEach(day => {
+                                        const option2 = document.createElement('option');
+                                        option2.value = day;
+                                        option2.textContent = day;
+                                        dropdown2.appendChild(option2);
+                                    });
+                                });
+                        </script>  
+
                     </div>
                 </div>
                 <br>

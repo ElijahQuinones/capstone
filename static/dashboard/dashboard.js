@@ -16,37 +16,6 @@ function closeSidebar() {
     }
 }
 
-// Event and day selection drop-down menu
-var events = new XMLHttpRequest();
-events.onreadystatechange = function() {
-    if (this.readyState == 4 && this.status == 200) {
-        var options = this.responseText.split("\n");
-        var select = document.getElementById("eventsSelect");
-        for(var i = 0; i < options.length; i++) {
-            var option = document.createElement("option");
-            option.text = options[i];
-            select.add(option);
-        }
-    }
-};
-events.open("GET", "{{ url_for('static', filename='dashboard/events.txt')}}", true);
-events.send();
-
-var days = new XMLHttpRequest();
-days.onreadystatechange = function() {
-    if (this.readyState == 4 && this.status == 200) {
-        var options = this.responseText.split("\n");
-        var select = document.getElementById("daysSelect");
-        for(var i = 0; i < options.length; i++) {
-            var option = document.createElement("option");
-            option.text = options[i];
-            select.add(option);
-        }
-    }
-};
-days.open("GET", "{{ url_for('static', filename='dashboard/days.txt')}}", true);
-days.send();
-
 // Datatables.net integration
 $(document).ready(function() {
     var table = $('#example').DataTable({
