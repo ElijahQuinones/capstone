@@ -22,10 +22,10 @@ $(document).ready(function() {
         "responsive": true,
         "autoWidth": true,
         "scrollX": true,
-//        "ajax": {
-//            "url": "{{ url_for('static', filename='dashboard/data.json')}}",
-//            "dataSrc": "Records"
-//        },
+        "ajax":{
+            url:"https://aws1.onrender.com/static/dashboard/data.json",
+            "dataSrc": "Records"
+        },
         "ajax": {
             "url": "/boto3/cloudtrail/ConsoleLogin/7",
             "dataType": "json",

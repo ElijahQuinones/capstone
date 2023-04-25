@@ -37,6 +37,7 @@ def login():
             return redirect("https://itcapstone.auth.us-east-1.amazoncognito.com/login?client_id=nni18qf04rvoq1p64edejus30&response_type=code&scope=email+openid+phone&redirect_uri=https%3A%2F%2Faws1.onrender.com%2Floggedin")
 
 
+
 # get_data is for testing purposes 
 # Event name parameter is required 
 @app.route("/getData/<event_name>/<int:days>")
