@@ -27,7 +27,7 @@ $(document).ready(function() {
             "dataSrc": "Records"
         },
         "ajax": {
-            "url": "/boto3/cloudtrail/ConsoleLogin/7",
+            "url": "/boto3/cloudtrail/ConsoleLogin/90",
             "dataType": "json",
             "dataSrc": "Events"
         },
