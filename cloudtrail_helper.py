@@ -20,6 +20,7 @@ def event_data(event_name, days):
     'cloudtrail',
     aws_access_key_id=id,
     aws_secret_access_key=key,
+    region_name='us-east-2',
   )
 
   response = cloudtrail.lookup_events(
