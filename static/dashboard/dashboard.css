@@ -220,7 +220,7 @@ body {
   }
   
 .dropdown-customizable select {
-    font-size: 16px;
+    font-size: 80%;
     padding: 10px;
     width: 100%;
     margin: 20px 0px 10px 0px;
