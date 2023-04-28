@@ -1,7 +1,6 @@
 import boto3
 import os
 from dotenv import load_dotenv
-import json
 import datetime
 load_dotenv(".env")
 
@@ -43,3 +42,4 @@ def event_data(event_name, days):
   return response
   # for bucket in response['Buckets']:
   #     return (f'  {bucket["Name"]}')
+
