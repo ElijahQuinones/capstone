@@ -20,17 +20,13 @@ function closeSidebar() {
         sidebarOpen = false;
     }
 }
-var counter = 1;
 const dropdown = document.getElementById("operations");
 let selectedValue = dropdown.value;
 let usedValue = null;
 dropdown.addEventListener('change',function() {
     selectedValue = dropdown.value;
-    console.log(counter)
     console.log("selcted value" + selectedValue);
-    
 // Datatables.net integration
-    
     var table = $('#example').DataTable({
         "responsive": true,
         "autoWidth": true,
@@ -45,11 +41,22 @@ dropdown.addEventListener('change',function() {
             { "data": "EventName" },
             { "data": "EventId" },
             { "data": "EventSource" },
-            { "data": "EventTime" },
-
-        ]
-    
+            { "data": "EventTime",
+                "type": "date",
+                "render": function (data, type, row, meta) { // sovles bug where is was ordered only by day of week
+                    if (type === 'display' || type === 'filter') {
+                        return moment(data).format(' dddd, MMMM Do, YYYY, HH:mm');
+                    }
+                    return data;
+                },
+            }, 
+            
+        ],  
+            drawCallback: function () {//fires when table is drawn
+                document.getElementById("eventCount").innerHTML = this.api().rows().count(); //grab the count of data entries and repalce the element with Id event count with the number of events
+              },
 });
+
 // Beginning of HighCharts integration (with steps)
 // Create the chart with initial data
 var container = $('<div/>').insertBefore(table.table().container());

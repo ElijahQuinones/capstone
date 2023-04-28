@@ -18,7 +18,7 @@
                     <span class="material-icons-outlined">menu</span>
                 </div>
                 <div class="header-left">
-                    <span class="username">Hello!</span>
+                    <span class="username">Welcome !</span>
                 </div>
                     <a style="text-decoration: none; color: #666666;" href="./">
                         <div class="header-right">
@@ -62,7 +62,7 @@
                             <h3>EVENTS</h3>
                             <span class="material-icons-outlined text-orange">event</span>
                         </div>
-                        <h1>"events_here"</h1>
+                        <h1 id="eventCount"> No events to display yet !  <br> Please select an event !</h1>
                     </div>
                     
                     <div class="card">
@@ -156,6 +156,7 @@
         <script src="https://code.highcharts.com/highcharts.js"></script>
 <!--        <script src="dashboard.js"></script> -->
         <script src="{{ url_for('static', filename='dashboard/dashboard.js')}}"></script>
-
+        <script src="//cdnjs.cloudflare.com/ajax/libs/moment.js/2.8.4/moment.min.js"></script>
+        <script src="//cdn.datatables.net/plug-ins/1.13.4/sorting/datetime-moment.js"></script>
     </body>
 </html>
