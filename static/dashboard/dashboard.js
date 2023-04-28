@@ -60,6 +60,7 @@ dropdown.addEventListener('change',function() {
         });
     }
     else{
+        $.fn.dataTable.ext.errMode = 'none';
         var table = $('#example').DataTable({
         "responsive": true,
         "autoWidth": true,
