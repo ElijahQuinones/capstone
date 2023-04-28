@@ -41,12 +41,11 @@ dropdown.addEventListener('change',function() {
             "dataSrc": "Events"
         },
         "columns": [
-            { "data": "EventTime" },
             { "data": "Username" },
             { "data": "EventName" },
             { "data": "EventId" },
             { "data": "EventSource" },
-            
+            { "data": "EventTime" },
 
         ]
     
