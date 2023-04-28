@@ -1,6 +1,6 @@
 from flask import Flask,render_template,request,redirect
 from waitress import serve
-from cloudtrail_helper import event_data 
+from cloudtrail_helper import event_data, displayAll
 app = Flask(__name__)
 
 
@@ -34,7 +34,9 @@ def get_cloudtrail_data(event_name, days):
     return event_data(event_name, days)
 
     # return redirect(url_for('get_data', event_name=event_name, days=days))
-
+@app.route("/alldata")
+def displayData():
+     return displayAll()
 if __name__ == '__main__':
     serve(app, host='0.0.0.0', port= 50100, threads =2)
     

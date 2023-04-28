@@ -25,9 +25,42 @@ let selectedValue = dropdown.value;
 let usedValue = null;
 dropdown.addEventListener('change',function() {
     selectedValue = dropdown.value;
-    console.log("selcted value" + selectedValue);
+    console.log("selcted value" + dropdown.options[1].value);
 // Datatables.net integration
-    var table = $('#example').DataTable({
+    if(selectedValue === dropdown.options[1].value){
+        $.fn.dataTable.ext.errMode = 'none';
+        var table = $('#example').DataTable({
+            "responsive": true,
+            "autoWidth": true,
+            "scrollX": true,
+            "ajax": {
+                "url": "/alldata",
+                "dataType": "json",
+                "dataSrc": "Events"
+            },
+            "columns": [
+                { "data": "Username" },
+                { "data": "EventName" },
+                { "data": "EventId" },
+                { "data": "EventSource" },
+                { "data": "EventTime",
+                    "type": "date",
+                    "render": function (data, type, row, meta) { // sovles bug where is was ordered only by day of week
+                        if (type === 'display' || type === 'filter') {
+                            return moment(data).format(' dddd, MMMM Do, YYYY, HH:mm');
+                        }
+                        return data;
+                    },
+                }, 
+                
+            ],  
+                drawCallback: function () {//fires when table is drawn
+                    document.getElementById("eventCount").innerHTML = this.api().rows().count(); //grab the count of data entries and repalce the element with Id event count with the number of events
+                  },
+        });
+    }
+    else{
+        var table = $('#example').DataTable({
         "responsive": true,
         "autoWidth": true,
         "scrollX": true,
@@ -55,7 +88,10 @@ dropdown.addEventListener('change',function() {
             drawCallback: function () {//fires when table is drawn
                 document.getElementById("eventCount").innerHTML = this.api().rows().count(); //grab the count of data entries and repalce the element with Id event count with the number of events
               },
-});
+    });
+    }
+    
+
 
 // Beginning of HighCharts integration (with steps)
 // Create the chart with initial data

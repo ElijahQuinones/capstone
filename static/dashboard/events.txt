@@ -1,3 +1,4 @@
+AllRecords
 AbortDocumentVersionUpload
 AbortEnvironmentUpdate
 AbortMultipartUpload
