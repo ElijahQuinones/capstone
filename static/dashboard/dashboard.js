@@ -42,6 +42,7 @@ dropdown.addEventListener('change',function() {
         },
         "columns": [
             { "data": "Username" },
+            { "data": "EventName" },
             { "data": "EventId" },
             { "data": "EventSource" },
             { "data": "EventTime" },
