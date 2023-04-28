@@ -102,6 +102,7 @@ AssociateVirtualInterface
 AssociateVpcCidrBlock
 AssociateVPCWithHostedZone
 AssociateWebACL
+AssumeRole
 AttachClassicLinkVpc
 AttachElasticLoadBalancer
 AttachGroupPolicy
