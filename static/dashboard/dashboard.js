@@ -36,7 +36,7 @@ dropdown.addEventListener('change',function() {
             "ajax": {
                 "url": "/alldata",
                 "dataType": "json",
-                "dataSrc": "Events"
+                "dataSrc": ""
             },
             "columns": [
                 { "data": "Username" },
@@ -60,7 +60,6 @@ dropdown.addEventListener('change',function() {
         });
     }
     else{
-        $.fn.dataTable.ext.errMode = 'none';
         var table = $('#example').DataTable({
         "responsive": true,
         "autoWidth": true,
@@ -68,7 +67,7 @@ dropdown.addEventListener('change',function() {
         "ajax": {
             "url": "/boto3/cloudtrail/"+selectedValue+"/90",
             "dataType": "json",
-            "dataSrc": "Events"
+            "dataSrc": ""
         },
         "columns": [
             { "data": "Username" },
@@ -145,3 +144,4 @@ function chartData(table) {
         };
     });
 }
+
